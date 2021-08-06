@@ -1,0 +1,169 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dark Mode</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <link
+            class="stylesheet-dark"
+            rel="stylesheet"
+            href="css/dark.css"
+            media="(prefers-color-scheme: dark)"
+        />
+
+    </head>
+    <body>
+       
+        
+        <main class="main">
+            <div class="shadow white-bg-color">
+                <header class="header">
+                    <nav class="header__nav">
+                        <button class="icon__button">
+                            <i class="fa fa-chevron-left fa-fw"></i>
+                        </button>
+                        <h1 class="m-0 typo-body2">Anas Boumediene</h1>
+                        <button class="toggle-theme"></button>
+                    </nav>
+                </header>
+
+                <section class="profile">
+                    <div class="border-wrap">
+                        <img
+                            class="profile__avatar"
+                            src="./img/avatar.jpg"
+                            alt=""
+                        />
+                        <button class="btn-follow">
+                            <i class="fa fa-user-plus"></i>
+                        </button>
+                    </div>
+                    <a href="https://www.instagram.com/anex_dev/">
+                        <h2 class="m-0 typo-headline6">Anas Boumediene</h2>
+                    </a>
+                    <p class="m-0 profile__bio typo-caption">
+                        📍 Düsseldorf, Germany 🇩🇪<br />
+                        🧑🏻‍💻 Full stack web developer (JS)
+                    </p>
+                    <ul class="profile__analytic">
+                        <li class="profile__analytic-item">
+                            <b>32</b>
+                            <p class="m-0 typo-caption text-secondary">Posts</p>
+                        </li>
+                        <li
+                            class="
+                                profile__analytic-item
+                                profile__analytic-item-second
+                            "
+                        >
+                            <b>113</b>
+                            <p class="m-0 typo-caption text-secondary">
+                                Followers
+                            </p>
+                        </li>
+                        <li class="profile__analytic-item">
+                            <b>204</b>
+                            <p class="m-0 typo-caption text-secondary">
+                                Following
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <section class="post">
+                <img class="post__img" src="./img/post-1.png" alt="" />
+                <img class="post__img" src="./img/post-2.png" alt="" />
+                <img class="post__img" src="./img/post-3.png" alt="" />
+                <img class="post__img" src="./img/post-4.png" alt="" />
+            </section>
+
+            <footer class="footer white-bg-color">
+                <div class="footer__left">
+                    <button class="icon__button">
+                        <i class="fa fa-home fa-fw"></i>
+                    </button>
+                    <button class="icon__button">
+                        <i class="fa fa-search fa-fw"></i>
+                    </button>
+                </div>
+                <div class="footer__center">
+                    <button class="fab">
+                        <i class="fa fa-fw fa-plus"></i>
+                    </button>
+                </div>
+                <div class="footer__right">
+                    <button class="icon__button">
+                        <i class="fa fa-heart fa-fw"></i>
+                    </button>
+                    <button class="icon__button selected-btn">
+                        <i class="fa fa-user fa-fw"></i>
+                    </button>
+                </div>
+            </footer>
+        </main>
+
+        <script src="../0.library/animes.js"></script>
+        <script>
+            class DarkMode {
+                constructor() {
+                    this.isActive;
+                    this.toggleTheme = document.querySelector(".toggle-theme");
+                    this.darkStyleSheet =document.querySelector(".stylesheet-dark");
+                    this.matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+
+                    this.toggle = this.toggle.bind(this);
+                    this.disable = this.disable.bind(this);
+                    this.enable = this.enable.bind(this);
+                    this.matchMediaEvent = this.matchMediaEvent.bind(this);
+
+                    this._init();
+                    this._addEventListener();
+                }
+
+                _init() {
+                    this.isActive = localStorage.getItem("theme") == "dark";
+                    this.isActive && this.enable();
+                }
+
+                disable() {
+                    this.isActive = false;
+                    this.darkStyleSheet.media = "not all";
+                    localStorage.setItem("theme", "light");
+                }
+
+                enable() {
+                    this.isActive = true;
+                    this.darkStyleSheet.media = "all";
+                    localStorage.setItem("theme", "dark");
+                }
+
+                toggle() {
+                    this.isActive ? this.disable() : this.enable();
+                }
+
+                matchMediaEvent({ matches }) {
+                    matches ? this.enable() : this.disable();
+                }
+
+                _addEventListener() {
+                    this.toggleTheme.addEventListener("click", this.toggle);
+                    this.matchMedia.addEventListener("change", this.matchMediaEvent);
+                }
+            }
+
+             new DarkMode();
+        </script>
+    </body>
+</html>

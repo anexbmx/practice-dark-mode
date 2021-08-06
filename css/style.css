@@ -1,0 +1,350 @@
+
+/* 
+    *
+    * root
+    *
+*/
+:root {
+    color-scheme: light dark;
+    --color: #424242;
+    --background-color: #fff;
+    --surface-color: #fff;
+    --fab-background-img: url(../img/appbar-light.svg);
+    --text-secondary-color: rgba(0, 0, 0, 0.54);
+    --link-color: #5e92f3;
+
+    --button-selected-color: #fff;
+    --button-selected-background-color: #5e92f3;
+    --button-color_hover: rgba(0, 0, 0, 0.04);
+
+    --background-instagram: linear-gradient( 45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+
+    --toggle-button-background: #DFE0E4;
+    --toggle-button-shadow: inset 0 0 11px rgb(0 0 0 / 10%);
+
+
+    --toggle-button-mode-light-transform: translateY(-40px);
+    --toggle-button-mode-dark-transform: scale(1) translateY(0);
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Cairo", sans-serif;
+    color: var(--color);
+    background-color: var(--background-color);
+    margin-bottom: 100px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    min-width: 48px;
+    min-height: 48px;
+    text-transform: uppercase;
+    color: var(--color);
+    
+}
+
+button:hover {
+    background-color: var(--button-color_hover);
+}
+
+.selected-btn {
+    background-color: var(--button-selected-background-color);
+    color: var(--button-selected-color);
+}
+
+img:not([src*='.svg']) {
+    filter: var(--image-filter);
+}
+
+
+.main {
+    max-width: 500px;
+    margin: auto;
+}
+
+
+
+/* 
+    *
+    * header
+    *
+*/
+.header {
+    padding: 8px;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* 
+    *
+    * Profile
+    *
+*/
+
+.profile {
+    border-radius: 0 0 50px 50px;
+    text-align: center;
+    padding: 8px 12px;
+    margin-bottom: 60px;
+}
+
+.border-wrap {
+    height: 120px;
+    width: 120px;
+    margin: auto;
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 8px;
+    background: var(--background-instagram);
+    position: relative;
+}
+
+.btn-follow {
+    position: absolute;
+    bottom: -4px;
+    right: 3px;
+    background: var(--background-instagram);
+    min-height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    color: #fff;
+    border: 2px solid var(--surface-color);
+    transition: transform 200ms linear;
+}
+
+ 
+.profile__avatar {
+    border: 5px solid var(--surface-color);
+    border-radius: 50%;
+}
+
+.profile__bio {
+    line-height: 20px;
+}
+
+.profile__user-info {
+    margin-top: 24px;
+}
+
+.profile__analytic {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    line-height: 20px;
+}
+
+.profile__analytic-item-second {
+    border-left: 1px solid rgba(0, 0, 0, .12);
+    border-right: 1px solid rgba(0, 0, 0, .12);
+    margin: 0 20px;
+    padding: 0 20px;
+}
+
+/* 
+    *
+    * Post
+    *
+*/
+.post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.post__img {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgb(8 8 8 / 30%);
+}
+
+
+/* 
+    *
+    * Footer
+    *
+*/
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    filter: drop-shadow(0px -2px 5px rgba(8, 8, 8, 0.1));
+}
+
+.footer__left, .footer__right {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__center {
+    width: 128px;
+    height: 40px;
+    transform: translateY(-49px);
+    text-align: center;
+}
+
+@media screen and (min-width: 344px) {
+    .footer__center {
+        background: var(--fab-background-img);
+    }
+}
+
+/* 
+    *
+    * Button toggle theme
+    *
+*/
+.toggle-theme {
+    border: 1px solid var(--toggle-button-background);;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--toggle-button-shadow);
+}
+
+.toggle-theme::after {
+    background: url(../img/sun.png) no-repeat 50%;
+    transform: var(--toggle-button-mode-light-transform);
+ }
+
+.toggle-theme::before {
+    background: url(../img/moon.png) no-repeat 50%;
+    transform: var(--toggle-button-mode-dark-transform);
+}
+
+.toggle-theme::after, .toggle-theme::before  {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 400ms;
+    background-size: 30px;
+    will-change: transform;
+    
+}
+
+/* 
+    *
+    * Micro-Framework
+    *
+*/
+.icon__button {
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+.fab {
+    height: 55px;
+    width: 55px;
+    background: var(--background-instagram);
+    border-radius: 50%;
+    margin-top: 12px;
+    font-size: 24px;
+    color: #fff;
+    box-shadow: 0 2px 5px rgb(8 8 8 / 33%);
+    transition: transform 200ms ease-out;
+}
+
+.fab:hover, .btn-follow:hover {
+    transform: scale(1.2);
+}
+
+.shadow {
+    box-shadow: 0 4px 20px rgb(8 8 8 / 10%);
+    border-radius: 0 0 40px 40px;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.text-secondary {
+    color: var(--text-secondary-color);
+}
+
+.typo-headline1 {
+    font-size: 102;
+}
+
+.typo-headline2 {
+    font-size: 64;
+}
+
+.typo-headline3 {
+    font-size: 51;
+}
+
+.typo-headline4 {
+    font-size: 36;
+}
+
+.typo-headline5 {
+    font-size: 25;
+}
+
+.typo-headline6 {
+    font-size: 21;
+}
+
+.typo-body1, .typo-subtitle1 {
+    font-size: 17;
+}
+
+.typo-body2, .typo-subtitle2 {
+    font-size: 15;
+}
+
+.typo-button {
+    font-size: 15;
+    text-transform: uppercase;
+}
+
+.typo-overline {
+    font-size: 11;
+}
+
+.typo-caption {
+    font-size: 13;
+}
+
+.white-bg-color {
+    background-color: var(--surface-color);
+}

@@ -1,0 +1,15 @@
+:root {
+    --color: #424242;
+    --background-color: #fff;
+    --surface-color: #fff;
+    --fab-background-img: url(../img/appbar-light.svg);
+    --text-secondary-color: rgba(0, 0, 0, 0.54);
+    --link-color: #5e92f3;
+
+    --button-selected-color: #fff;
+    --button-selected-background-color: #5e92f3;
+    --button-color_hover: rgba(0, 0, 0, 0.04);
+
+    --background-instagram: linear-gradient( 45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+
+}
